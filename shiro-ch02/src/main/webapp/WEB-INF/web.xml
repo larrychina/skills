@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+  <!-- 配置shiro监听器，在servlet容器启动时执行监听,初始化加载配置文件 -->
+  <!--<listener>
+    <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+  </listener>
+
+  <context-param>
+    <param-name>shiroEnvironmentClass</param-name>
+    <param-value>org.apache.shiro.web.env.IniWebEnvironment</param-value>
+  </context-param>
+  <context-param>
+    <param-name>shiroConfigLocations</param-name>
+    <param-value>classpath:shiro.ini</param-value>
+  </context-param>-->
+
+    <!--整合spring -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring-bean.xml,
+            classpath:spring-shiro.xml
+        </param-value>
+    </context-param>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+
+    <!-- shiro 安全过滤器 -->
+    <!-- The filter-name matches name of a 'shiroFilter' bean inside applicationContext.xml -->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+  <filter-mapping>
+    <filter-name>shiroFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  </web-app>
