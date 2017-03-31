@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sb_jdbc
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    view:
+      prefix: classpath*:templates/
+      suffix: .html
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  check-config-location: true
+  type-aliases-package: org.larry.springboot.entity
