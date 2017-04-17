@@ -12,8 +12,10 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(ManagementFactory.getOperatingSystemMXBean().getSystemLoadAverage());
+        // 初始化可用worker数量
         Master master = new Master(new Worker(),Runtime.getRuntime().availableProcessors()) ;
         Random r = new Random();
+        // 模拟100个任务
         for(int i = 1; i <= 100; i++){
             Task t = new Task();
             t.setId(i);

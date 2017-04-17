@@ -26,6 +26,7 @@ public class FutureData implements Data {
                 e.printStackTrace();
             }
         }
+        System.out.printf("");
         return data.getRequest();
     }
 }
