@@ -36,6 +36,7 @@ public class JmsConfiguration {
                 return session.createObjectMessage((Serializable) o) ;
             }
 
+
             @Override
             public Object fromMessage(Message message) throws JMSException, MessageConversionException {
 
