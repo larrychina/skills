@@ -29,7 +29,7 @@ public class Springboot09ApplicationTests {
 
     @Test
     public void testObjectProperties(){
-        assertEquals("SHA1",configProperties.getCredentials().getAuthMethod()) ;
+        assertEquals("demo",configProperties.getCredentials().getAuthMethod()) ;
     }
 
 
